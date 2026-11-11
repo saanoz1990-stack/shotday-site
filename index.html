@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Shotday: GLP-1 Shot Tracker for iPhone</title>
+<meta name="description" content="A simple log for weekly GLP-1 shots like semaglutide and tirzepatide. Home Screen widgets, reminders on local time, weight and side effects. No subscription, no account.">
+<link rel="icon" href="favicon.png">
+<meta property="og:title" content="Shotday: GLP-1 Shot Tracker">
+<meta property="og:description" content="Log a shot in one tap. See your next shot on your Home Screen. One-time purchase, no account.">
+<meta property="og:image" content="img/en-2.jpg">
+<style>
+/* Layout: one column, phone screenshots in a horizontal strip, free vs one-time side by side */
+:root{
+  --cobalt:#2350d8; --cobalt-deep:#1b3fb0; --peak:#ff9a3c;
+  --ink:#141a2e; --muted:#5d6580; --line:#e2e6f0; --paper:#f6f7fb; --card:#ffffff;
+  --fd:-apple-system,"SF Pro Display",system-ui,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{--ink:#eef1fa;--muted:#a3abc4;--line:#2a3150;--paper:#0d1222;--card:#161d33;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--fd)}
+a{color:var(--cobalt)}
+@media (prefers-color-scheme:dark){a{color:#8fa8ff}}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+header.hero{background:linear-gradient(170deg,var(--cobalt),var(--cobalt-deep));color:#fff;padding-block:56px 0;overflow:hidden}
+.brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:22px}
+.brand img{width:52px;height:52px;border-radius:12px}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.06;letter-spacing:-.02em;margin:28px 0 16px;max-width:15ch;text-wrap:balance}
+.lede{font-size:19px;max-width:40ch;color:rgba(255,255,255,.86);margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.badge{display:inline-block;background:#000;color:#fff;border-radius:12px;padding:10px 18px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.35)}
+.badge small{display:block;font-weight:500;font-size:12px;opacity:.8}
+.price{font-size:15px;color:rgba(255,255,255,.85)}
+.price b{color:#fff}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--peak);margin-right:8px}
+.strip{display:flex;gap:16px;overflow-x:auto;padding-block:40px 0;margin-top:8px;scroll-snap-type:x mandatory}
+.strip img{width:240px;max-width:62vw;height:auto;border-radius:22px 22px 0 0;scroll-snap-align:start;flex:none}
+section{padding-block:56px}
+h2{font-size:30px;letter-spacing:-.01em;margin:0 0 20px;text-wrap:balance}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.box h3{margin:0 0 4px;font-size:20px}
+.box .tag{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.box ul{margin:14px 0 0;padding-left:20px}
+.box li{margin:6px 0}
+.box.pay{border-color:var(--cobalt);box-shadow:0 0 0 1px var(--cobalt) inset}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.facts p{margin:6px 0 0;color:var(--muted)}
+.facts b{font-size:18px}
+.es{background:var(--card);border-block:1px solid var(--line)}
+.es p{max-width:60ch}
+.note{color:var(--muted);font-size:15px;max-width:70ch}
+footer{padding-block:32px 48px;color:var(--muted);font-size:15px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><img src="img/icon.png" alt="">Shotday</div>
+    <h1>Your GLP-1 shot log, right on your Home Screen</h1>
+    <p class="lede">Log a shot in one tap. See when the next one is due, how much is left in your pen, and how your weight is changing day by day.</p>
+    <div class="cta">
+      <span class="badge"><small>Coming soon on the</small>App Store</span>
+      <span class="price"><span class="dot"></span><b>Free</b> to log shots · everything else <b>$8.99 once</b>, no subscription</span>
+    </div>
+    <div class="strip" aria-label="Screenshots">
+      <img src="img/en-1.jpg" alt="Today screen: estimated level 91%, next shot in 5 days, weight 210.1 lb">
+      <img src="img/en-2.jpg" alt="Home Screen and Lock Screen widgets showing level and next shot">
+      <img src="img/en-3.jpg" alt="Weight chart day by day with dose changes marked">
+      <img src="img/en-4.jpg" alt="Body map showing where you injected in the last 2 weeks">
+      <img src="img/en-5.jpg" alt="Daily protein and water rings and side effect check-in">
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>What's free, and what you pay for once</h2>
+      <div class="cols">
+        <div class="box">
+          <span class="tag">Free, forever</span>
+          <h3>Everything you need to log</h3>
+          <ul>
+            <li>Any dose, any schedule, every 1 to 14 days</li>
+            <li>Shot day reminders on your phone's local time</li>
+            <li>Pen doses left, or vial units with a use-by date</li>
+            <li>Daily weight with a chart</li>
+            <li>Protein and water goals you set</li>
+            <li>Nausea, food noise and other side effects</li>
+            <li>Backup and restore as a file</li>
+          </ul>
+        </div>
+        <div class="box pay">
+          <span class="tag">One-time $8.99</span>
+          <h3>See it all at a glance</h3>
+          <ul>
+            <li>Home Screen and Lock Screen widgets</li>
+            <li>Estimated medication level chart, with nausea on the same chart</li>
+            <li>Body map of your last 2 weeks of injection spots</li>
+            <li>PDF report and CSV export for your doctor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap facts">
+      <div><b>No account</b><p>No sign-up, no server. What you log stays on your iPhone, with a daily backup in the Files app.</p></div>
+      <div><b>No subscription</b><p>Most shot trackers charge every month. Shotday is one payment and it's yours.</p></div>
+      <div><b>Works when you travel</b><p>Reminders follow your phone's time zone, so a trip doesn't move your shot day.</p></div>
+      <div><b>5 languages</b><p>English, Español, Deutsch, Français and 한국어. Units follow your country.</p></div>
+    </div>
+  </section>
+
+  <section class="es" lang="es">
+    <div class="wrap">
+      <h2>También en español</h2>
+      <p>Toda la app está en español: registro de inyecciones, recordatorios, peso, proteína, agua y efectos secundarios. Las unidades se ajustan a tu país y puedes cambiarlas cuando quieras.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="note">Shotday is a log, not medical advice. The medication level is an estimate from published half-life data and your own shot times. Always follow your doctor and your pharmacy label. Shotday is not affiliated with any drug maker.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Shotday, made by an independent developer in Korea</span>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="support.html">Support</a>
+  </div>
+</footer>
+</body>
+</html>
